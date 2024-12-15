@@ -29,6 +29,7 @@ export async function setupDev(app: Application) {
       res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
     } catch (e) {
       vite.ssrFixStacktrace(e as Error)
+      console.error((e as Error).stack)
       next(e)
     }
   })

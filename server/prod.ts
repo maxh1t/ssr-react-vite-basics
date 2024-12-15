@@ -12,7 +12,7 @@ const ENTRY_SERVER_PATH = path.resolve(process.cwd(), 'dist/ssr/entry-server.js'
 
 export async function setupProd(app: Application) {
   app.use(compression())
-  app.use(sirv(CLIENT_PATH))
+  app.use(sirv(CLIENT_PATH, { extensions: [] }))
 
   app.get('*', async (_, res, next) => {
     try {
@@ -24,6 +24,7 @@ export async function setupProd(app: Application) {
       const html = template.replace(HTML_KEY, appHtml)
       res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
     } catch (e) {
+      console.error((e as Error).stack)
       next(e)
     }
   })
