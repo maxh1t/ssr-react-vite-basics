@@ -23,7 +23,7 @@ export async function setupDev(app: Application) {
       template = await vite.transformIndexHtml(req.originalUrl, template)
 
       const { render } = await vite.ssrLoadModule(ENTRY_SERVER_PATH)
-      const appHtml = await render()
+      const appHtml = await render(req.url)
 
       const html = template.replace(HTML_KEY, appHtml)
       res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
