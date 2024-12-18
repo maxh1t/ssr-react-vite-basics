@@ -3,16 +3,18 @@ import { ROUTES } from '../constants'
 
 export function Layout() {
   return (
-    <>
+    <div className='layout'>
       <nav>
-        <Link to={ROUTES.home}>Home</Link>
-        <Link to={ROUTES.dashboard}>Dashboard</Link>
-        <Link to={ROUTES.profile}>Profile</Link>
-        <Link to={ROUTES.news}>News</Link>
+        <div>
+          <Link to={ROUTES.home}>Home</Link>
+          <Link to={ROUTES.posts}>Posts</Link>
+          <Link to={ROUTES.albums}>Albums</Link>
+          <Link to={ROUTES.todos}>Todos</Link>
+        </div>
       </nav>
       <main>
         <Outlet />
       </main>
-    </>
+    </div>
   )
 }

@@ -24,8 +24,6 @@ WORKDIR /app
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/package.json ./package.json
 
-RUN corepack enable
-
 EXPOSE 3000
 
-CMD ["pnpm", "start"]
+CMD ["npm", "run", "start"]
